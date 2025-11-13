@@ -12,6 +12,6 @@ import java.util.List;
 @Repository
 public interface HabilidadesRepository extends JpaRepository<Habilidade, Integer> {
 
-  @Query("select ab from Habilidade ab where ab.idUsuario.id = :usuario")
+  @Query("select ab from Habilidade ab join fetch ab.idUsuario u join fetch ab.idCategoriaHabilidad c join fetch ab.idNivel n where u.id = :usuario")
   List<Habilidade> findByUsuario(@Param("usuario") Integer usuario);
 }

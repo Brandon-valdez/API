@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Getter
 @Setter
@@ -18,14 +19,17 @@ public class Habilidade {
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "id_usuario", nullable = false)
   @JsonManagedReference
+  @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
   private Usuario idUsuario;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "id_categoria_habilidad", nullable = false)
+  @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
   private CategoriaHabilidad idCategoriaHabilidad;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "id_nivel", nullable = false)
+  @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
   private NivelHabilidad idNivel;
 
   @Column(name = "nom_habilidad", nullable = false, length = 150)

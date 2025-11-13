@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.time.Instant;
 import java.util.LinkedHashSet;
@@ -14,6 +15,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "usuario")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Usuario {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

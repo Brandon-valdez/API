@@ -11,6 +11,6 @@ public class WebConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         // Permite servir las imágenes subidas desde /home/azureuser/uploads/
         registry.addResourceHandler("/uploads/**")
-                .addResourceLocations("file:/home/dam/uploads/");
+                .addResourceLocations("file:///home/dam/uploads/");
     }
 }

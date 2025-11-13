@@ -1,0 +1,302 @@
+### API Android - Endpoints Documentation
+### Base URL: http://localhost:8080
+
+### =====================================================
+### USUARIOS CONTROLLER - /api/usuarios
+### =====================================================
+
+### GET - Obtener todos los usuarios
+GET http://localhost:8080/api/usuarios/all
+
+### GET - Obtener usuario por ID
+GET http://localhost:8080/api/usuarios/1
+
+### GET - Obtener usuario por email
+GET http://localhost:8080/api/usuarios/email?email=usuario@example.com
+
+### POST - Crear nuevo usuario
+POST http://localhost:8080/api/usuarios/save
+Content-Type: application/x-www-form-urlencoded
+
+nombre=Juan&apellido=Pérez&email=juan@example.com&password=Password123&fotoPerfil=https://example.com/avatar.jpg&biografia=Desarrollador apasionado por la tecnología
+
+### PUT - Actualizar usuario
+PUT http://localhost:8080/api/usuarios/update/1
+Content-Type: application/x-www-form-urlencoded
+
+nombre=Juan Carlos&biografia=Experto en desarrollo web
+
+### DELETE - Eliminar usuario
+DELETE http://localhost:8080/api/usuarios/delete/1
+
+### =====================================================
+### REUNIONES CONTROLLER - /api/reuniones
+### =====================================================
+
+### GET - Obtener todas las reuniones por usuario
+GET http://localhost:8080/api/reuniones/byUsuario?id=1
+
+### GET - Obtener reunión por ID
+GET http://localhost:8080/api/reuniones/1
+
+### POST - Crear nueva reunión
+POST http://localhost:8080/api/reuniones/save
+Content-Type: application/x-www-form-urlencoded
+
+idUsuario1=1&idUsuario2=2&idEstadoR=1&fechaHora=2025-11-11T10:30:00Z&duracion=01:30:00
+
+### PUT - Actualizar reunión
+PUT http://localhost:8080/api/reuniones/update/1
+Content-Type: application/x-www-form-urlencoded
+
+idUsuario1=1&idUsuario2=3&duracion=02:00:00
+
+### DELETE - Eliminar reunión
+DELETE http://localhost:8080/api/reuniones/delete/1
+
+### =====================================================
+### OPINIONES CONTROLLER - /api/opiniones
+### =====================================================
+
+### GET - Obtener todas las opiniones
+GET http://localhost:8080/api/opiniones/all
+
+### GET - Obtener opinión por ID
+GET http://localhost:8080/api/opiniones/1
+
+### GET - Obtener opiniones por usuario
+GET http://localhost:8080/api/opiniones/byUsuario?id=1
+
+### POST - Crear nueva opinión
+POST http://localhost:8080/api/opiniones/save
+Content-Type: application/x-www-form-urlencoded
+
+idAutor=1&idReceptor=2&opinion=Excelente reunión, muy productiva&valorReunion=4.5
+
+### PUT - Actualizar opinión
+PUT http://localhost:8080/api/opiniones/update/1
+Content-Type: application/x-www-form-urlencoded
+
+opinion=Muy buena experiencia&valorReunion=5
+
+### DELETE - Eliminar opinión
+DELETE http://localhost:8080/api/opiniones/delete/1
+
+### =====================================================
+### DISPONIBILIDAD CONTROLLER - /api/disponibilidad
+### =====================================================
+
+### GET - Obtener todas las disponibilidades
+GET http://localhost:8080/api/disponibilidad/all
+
+### GET - Obtener disponibilidad por ID
+GET http://localhost:8080/api/disponibilidad/1
+
+### GET - Obtener disponibilidades por usuario
+GET http://localhost:8080/api/disponibilidad/byUsuario?id=1
+
+### POST - Crear nueva disponibilidad
+POST http://localhost:8080/api/disponibilidad/save
+Content-Type: application/x-www-form-urlencoded
+
+idUsuario=1&diaSemana=Lunes&horaInicio=09:00:00&horaFin=17:00:00&disponible=true
+
+### PUT - Actualizar disponibilidad
+PUT http://localhost:8080/api/disponibilidad/update/1
+Content-Type: application/x-www-form-urlencoded
+
+diaSemana=Martes&horaInicio=10:00:00&horaFin=18:00:00
+
+### DELETE - Eliminar disponibilidad
+DELETE http://localhost:8080/api/disponibilidad/delete/1
+
+### =====================================================
+### HABILIDADES CONTROLLER - /api/habilidades
+### =====================================================
+
+### GET - Obtener todas las habilidades
+GET http://localhost:8080/api/habilidades/all
+
+### GET - Obtener habilidad por ID
+GET http://localhost:8080/api/habilidades/1
+
+### GET - Obtener habilidades por usuario
+GET http://localhost:8080/api/habilidades/byUsuario?id=1
+
+### POST - Crear nueva habilidad
+POST http://localhost:8080/api/habilidades/save
+Content-Type: application/x-www-form-urlencoded
+
+idUsuario=1&idCategoriaHabilidad=1&idNivel=3&nomHabilidad=Java Advanced&descripcionBreve=Experiencia en desarrollo con Spring Boot&fotoDiploma=https://example.com/diploma.jpg
+
+### PUT - Actualizar habilidad
+PUT http://localhost:8080/api/habilidades/update/1
+Content-Type: application/x-www-form-urlencoded
+
+nomHabilidad=Java Expert&idNivel=4
+
+### DELETE - Eliminar habilidad
+DELETE http://localhost:8080/api/habilidades/delete/1
+
+### =====================================================
+### CATEGORIAS HABILIDAD CONTROLLER - /api/categorias
+### =====================================================
+
+### GET - Obtener todas las categorías de habilidad
+GET http://localhost:8080/api/categorias/all
+
+### GET - Obtener categoría por ID
+GET http://localhost:8080/api/categorias/1
+
+### POST - Crear nueva categoría de habilidad
+POST http://localhost:8080/api/categorias/save
+Content-Type: application/x-www-form-urlencoded
+
+nombreCategoria=Programación
+
+### PUT - Actualizar categoría de habilidad
+PUT http://localhost:8080/api/categorias/update/1
+Content-Type: application/x-www-form-urlencoded
+
+nombreCategoria=Desarrollo de Software
+
+### DELETE - Eliminar categoría de habilidad
+DELETE http://localhost:8080/api/categorias/delete/1
+
+### =====================================================
+### NIVELES HABILIDAD CONTROLLER - /api/niveles
+### =====================================================
+
+### GET - Obtener todos los niveles de habilidad
+GET http://localhost:8080/api/niveles/all
+
+### GET - Obtener nivel por ID
+GET http://localhost:8080/api/niveles/1
+
+### POST - Crear nuevo nivel de habilidad
+POST http://localhost:8080/api/niveles/save
+Content-Type: application/x-www-form-urlencoded
+
+nomNivel=Avanzado
+
+### PUT - Actualizar nivel de habilidad
+PUT http://localhost:8080/api/niveles/update/1
+Content-Type: application/x-www-form-urlencoded
+
+nomNivel=Experto
+
+### DELETE - Eliminar nivel de habilidad
+DELETE http://localhost:8080/api/niveles/delete/1
+
+### =====================================================
+### ESTRUCTURA DE DATOS - REUNIONES
+### =====================================================
+
+### Campos POST/PUT (Reuniones):
+# - idUsuario1: Integer (ID del primer usuario) - REQUERIDO
+# - idUsuario2: Integer (ID del segundo usuario) - REQUERIDO
+# - idEstadoR: Integer (ID del estado de reunión) - REQUERIDO
+# - fechaHora: String (Formato ISO-8601: "2025-11-11T10:30:00Z") - REQUERIDO
+# - duracion: String (Formato "HH:mm:ss", ejemplo: "01:30:00") - REQUERIDO
+
+### =====================================================
+### ESTRUCTURA DE DATOS - USUARIOS
+### =====================================================
+
+### Campos POST (Usuarios):
+# - nombre: String (Nombre del usuario) - REQUERIDO
+# - apellido: String (Apellido del usuario) - REQUERIDO
+# - email: String (Email único) - REQUERIDO
+# - password: String (Contraseña) - REQUERIDO
+# - fotoPerfil: String (URL de foto de perfil) - OPCIONAL
+# - biografia: String (Biografía del usuario) - OPCIONAL
+
+### =====================================================
+### ESTRUCTURA DE DATOS - OPINIONES
+### =====================================================
+
+### Campos POST/PUT (Opiniones):
+# - idAutor: Integer (ID del usuario que escribe) - REQUERIDO
+# - idReceptor: Integer (ID del usuario que recibe) - REQUERIDO
+# - opinion: String (Texto de la opinión) - REQUERIDO
+# - valorReunion: Float (Valoración 1-5, ejemplo: 4.5) - OPCIONAL
+
+### =====================================================
+### ESTRUCTURA DE DATOS - DISPONIBILIDAD
+### =====================================================
+
+### Campos POST/PUT (Disponibilidad):
+# - idUsuario: Integer (ID del usuario) - REQUERIDO
+# - diaSemana: String (Día de la semana, ejemplo: "Lunes", "Martes") - REQUERIDO
+# - horaInicio: String (Formato "HH:mm:ss", ejemplo: "09:00:00") - REQUERIDO
+# - horaFin: String (Formato "HH:mm:ss", ejemplo: "17:00:00") - REQUERIDO
+# - disponible: Boolean (true/false, default: true) - OPCIONAL
+
+### =====================================================
+### ESTRUCTURA DE DATOS - HABILIDADES
+### =====================================================
+
+### Campos POST/PUT (Habilidades):
+# - idUsuario: Integer (ID del usuario propietario) - REQUERIDO
+# - idCategoriaHabilidad: Integer (ID de la categoría) - REQUERIDO
+# - idNivel: Integer (ID del nivel de habilidad) - REQUERIDO
+# - nomHabilidad: String (Nombre de la habilidad) - REQUERIDO
+# - descripcionBreve: String (Descripción breve) - OPCIONAL
+# - fotoDiploma: String (URL o ruta de foto del diploma) - OPCIONAL
+
+### =====================================================
+### ESTRUCTURA DE DATOS - CATEGORIAS HABILIDAD
+### =====================================================
+
+### Campos POST/PUT (Categorías Habilidad):
+# - nombreCategoria: String (Nombre de la categoría, ejemplo: "Programación", "Diseño", "Marketing") - REQUERIDO
+
+### =====================================================
+### ESTRUCTURA DE DATOS - NIVELES HABILIDAD
+### =====================================================
+
+### Campos POST/PUT (Niveles Habilidad):
+# - nomNivel: String (Nombre del nivel, ejemplo: "Básico", "Intermedio", "Avanzado", "Experto") - REQUERIDO
+
+### =====================================================
+### CÓDIGOS DE RESPUESTA HTTP
+### =====================================================
+
+# 200 OK - Operación exitosa
+# 400 BAD REQUEST - Error en la solicitud (campos inválidos o entidades no encontradas)
+# 404 NOT FOUND - Recurso no encontrado
+# 500 INTERNAL SERVER ERROR - Error del servidor
+
+### =====================================================
+### EJEMPLOS COMPLETOS CON DATOS
+### =====================================================
+
+### Ejemplo: Crear un nuevo usuario
+# POST http://localhost:8080/api/usuarios/save
+# Content-Type: application/x-www-form-urlencoded
+# 
+# nombre=Carlos&apellido=García&email=carlos@example.com&password=SecurePass123&fotoPerfil=https://example.com/carlos.jpg&biografia=Ingeniero de software con 5 años de experiencia
+
+### Ejemplo: Crear una reunión completa
+# POST http://localhost:8080/api/reuniones/save
+# Content-Type: application/x-www-form-urlencoded
+# 
+# idUsuario1=1&idUsuario2=2&idEstadoR=1&fechaHora=2025-11-15T14:00:00Z&duracion=02:30:00
+
+### Ejemplo: Crear una opinión con valoración
+# POST http://localhost:8080/api/opiniones/save
+# Content-Type: application/x-www-form-urlencoded
+# 
+# idAutor=1&idReceptor=2&opinion=Muy buen profesional, excelente comunicación&valorReunion=5
+
+### Ejemplo: Crear disponibilidad para toda la semana
+# POST http://localhost:8080/api/disponibilidad/save
+# Content-Type: application/x-www-form-urlencoded
+# 
+# idUsuario=1&diaSemana=Lunes&horaInicio=08:00:00&horaFin=18:00:00&disponible=true
+
+### Ejemplo: Crear habilidad técnica con diploma
+# POST http://localhost:8080/api/habilidades/save
+# Content-Type: application/x-www-form-urlencoded
+# 
+# idUsuario=1&idCategoriaHabilidad=2&idNivel=4&nomHabilidad=Python Master&descripcionBreve=Certificado en Desarrollo Python Avanzado&fotoDiploma=https://example.com/python-cert.jpg

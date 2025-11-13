@@ -1,0 +1,726 @@
+### API Android - Endpoints con JSON
+### Base URL: http://localhost:8080
+
+### =====================================================
+### USUARIOS CONTROLLER - /api/usuarios
+### =====================================================
+
+### GET - Obtener todos los usuarios
+GET http://localhost:8080/api/usuarios/all
+
+###> Response: 200 OK
+{
+  "data": [
+    {
+      "id": 1,
+      "nombre": "Juan",
+      "apellido": "Pérez",
+      "email": "juan@example.com",
+      "password": "Password123",
+      "fotoPerfil": "https://example.com/avatar.jpg",
+      "biografia": "Desarrollador apasionado por la tecnología",
+      "fechaRegistro": "2025-11-12T15:30:00Z"
+    }
+  ],
+  "status": "success",
+  "message": "Usuarios obtenidos correctamente"
+}
+
+### GET - Obtener usuario por ID
+GET http://localhost:8080/api/usuarios/1
+
+###> Response: 200 OK
+{
+  "id": 1,
+  "nombre": "Juan",
+  "apellido": "Pérez",
+  "email": "juan@example.com",
+  "password": "Password123",
+  "fotoPerfil": "https://example.com/avatar.jpg",
+  "biografia": "Desarrollador apasionado por la tecnología",
+  "fechaRegistro": "2025-11-12T15:30:00Z"
+}
+
+###> Response: 404 Not Found
+{
+  "status": "error",
+  "message": "Usuario no encontrado",
+  "code": 404
+}
+
+### GET - Obtener usuario por email
+GET http://localhost:8080/api/usuarios/email?email=juan@example.com
+
+###> Response: 200 OK
+{
+  "id": 1,
+  "nombre": "Juan",
+  "apellido": "Pérez",
+  "email": "juan@example.com",
+  "password": "Password123",
+  "fotoPerfil": "https://example.com/avatar.jpg",
+  "biografia": "Desarrollador apasionado por la tecnología",
+  "fechaRegistro": "2025-11-12T15:30:00Z"
+}
+
+### POST - Crear nuevo usuario
+POST http://localhost:8080/api/usuarios/save
+Content-Type: application/json
+
+{
+  "nombre": "Juan",
+  "apellido": "Pérez",
+  "email": "juan@example.com",
+  "password": "Password123",
+  "fotoPerfil": "https://example.com/avatar.jpg",
+  "biografia": "Desarrollador apasionado por la tecnología"
+}
+
+###> Response: 201 Created
+{
+  "status": "success",
+  "message": "Usuario creado exitosamente",
+  "data": {
+    "id": 1,
+    "nombre": "Juan",
+    "apellido": "Pérez",
+    "email": "juan@example.com",
+    "password": "Password123",
+    "fotoPerfil": "https://example.com/avatar.jpg",
+    "biografia": "Desarrollador apasionado por la tecnología",
+    "fechaRegistro": "2025-11-12T15:30:00Z"
+  }
+}
+
+###> Response: 400 Bad Request
+{
+  "status": "error",
+  "message": "El email ya existe",
+  "code": 400
+}
+
+### PUT - Actualizar usuario
+PUT http://localhost:8080/api/usuarios/update/1
+Content-Type: application/json
+
+{
+  "nombre": "Juan Carlos",
+  "biografia": "Experto en desarrollo web"
+}
+
+###> Response: 200 OK
+{
+  "status": "success",
+  "message": "Usuario actualizado exitosamente",
+  "data": {
+    "id": 1,
+    "nombre": "Juan Carlos",
+    "apellido": "Pérez",
+    "email": "juan@example.com",
+    "password": "Password123",
+    "fotoPerfil": "https://example.com/avatar.jpg",
+    "biografia": "Experto en desarrollo web",
+    "fechaRegistro": "2025-11-12T15:30:00Z"
+  }
+}
+
+### DELETE - Eliminar usuario
+DELETE http://localhost:8080/api/usuarios/delete/1
+
+###> Response: 200 OK
+{
+  "status": "success",
+  "message": "Usuario eliminado exitosamente"
+}
+
+### =====================================================
+### REUNIONES CONTROLLER - /api/reuniones
+### =====================================================
+
+### GET - Obtener todas las reuniones por usuario
+GET http://localhost:8080/api/reuniones/byUsuario?id=1
+
+###> Response: 200 OK
+{
+  "data": [
+    {
+      "id": 1,
+      "idUsuario1": {
+        "id": 1,
+        "nombre": "Juan",
+        "apellido": "Pérez",
+        "email": "juan@example.com"
+      },
+      "idUsuario2": {
+        "id": 2,
+        "nombre": "María",
+        "apellido": "García",
+        "email": "maria@example.com"
+      },
+      "idEstadoR": {
+        "id": 1,
+        "estado": "Programada"
+      },
+      "fechaReunion": "2025-11-15T14:00:00Z",
+      "duracionReunion": "02:30:00"
+    }
+  ],
+  "status": "success",
+  "message": "Reuniones obtenidas correctamente"
+}
+
+### GET - Obtener reunión por ID
+GET http://localhost:8080/api/reuniones/1
+
+###> Response: 200 OK
+{
+  "id": 1,
+  "idUsuario1": {
+    "id": 1,
+    "nombre": "Juan",
+    "apellido": "Pérez",
+    "email": "juan@example.com"
+  },
+  "idUsuario2": {
+    "id": 2,
+    "nombre": "María",
+    "apellido": "García",
+    "email": "maria@example.com"
+  },
+  "idEstadoR": {
+    "id": 1,
+    "estado": "Programada"
+  },
+  "fechaReunion": "2025-11-15T14:00:00Z",
+  "duracionReunion": "02:30:00"
+}
+
+### POST - Crear nueva reunión
+POST http://localhost:8080/api/reuniones/save
+Content-Type: application/json
+
+{
+  "idUsuario1": 1,
+  "idUsuario2": 2,
+  "idEstadoR": 1,
+  "fechaReunion": "2025-11-15T14:00:00Z",
+  "duracionReunion": "02:30:00"
+}
+
+###> Response: 201 Created
+{
+  "status": "success",
+  "message": "Reunión creada exitosamente",
+  "data": {
+    "id": 1,
+    "idUsuario1": {
+      "id": 1,
+      "nombre": "Juan"
+    },
+    "idUsuario2": {
+      "id": 2,
+      "nombre": "María"
+    },
+    "idEstadoR": {
+      "id": 1,
+      "estado": "Programada"
+    },
+    "fechaReunion": "2025-11-15T14:00:00Z",
+    "duracionReunion": "02:30:00"
+  }
+}
+
+### PUT - Actualizar reunión
+PUT http://localhost:8080/api/reuniones/update/1
+Content-Type: application/json
+
+{
+  "idUsuario1": 1,
+  "idUsuario2": 3,
+  "duracionReunion": "02:00:00"
+}
+
+###> Response: 200 OK
+{
+  "status": "success",
+  "message": "Reunión actualizada exitosamente",
+  "data": {
+    "id": 1,
+    "idUsuario1": {"id": 1},
+    "idUsuario2": {"id": 3},
+    "duracionReunion": "02:00:00"
+  }
+}
+
+### DELETE - Eliminar reunión
+DELETE http://localhost:8080/api/reuniones/delete/1
+
+###> Response: 200 OK
+{
+  "status": "success",
+  "message": "Reunión eliminada exitosamente"
+}
+
+### =====================================================
+### OPINIONES CONTROLLER - /api/opiniones
+### =====================================================
+
+### GET - Obtener todas las opiniones
+GET http://localhost:8080/api/opiniones/all
+
+###> Response: 200 OK
+{
+  "data": [
+    {
+      "id": 1,
+      "idAutor": {
+        "id": 1,
+        "nombre": "Juan"
+      },
+      "idReceptor": {
+        "id": 2,
+        "nombre": "María"
+      },
+      "opinion": "Excelente reunión, muy productiva",
+      "valorReunion": 4.5
+    }
+  ],
+  "status": "success",
+  "message": "Opiniones obtenidas correctamente"
+}
+
+### GET - Obtener opinión por ID
+GET http://localhost:8080/api/opiniones/1
+
+###> Response: 200 OK
+{
+  "id": 1,
+  "idAutor": {
+    "id": 1,
+    "nombre": "Juan"
+  },
+  "idReceptor": {
+    "id": 2,
+    "nombre": "María"
+  },
+  "opinion": "Excelente reunión, muy productiva",
+  "valorReunion": 4.5
+}
+
+### GET - Obtener opiniones por usuario
+GET http://localhost:8080/api/opiniones/byUsuario?id=1
+
+###> Response: 200 OK
+{
+  "data": [
+    {
+      "id": 1,
+      "idAutor": {"id": 1, "nombre": "Juan"},
+      "idReceptor": {"id": 2, "nombre": "María"},
+      "opinion": "Excelente reunión, muy productiva",
+      "valorReunion": 4.5
+    }
+  ],
+  "status": "success"
+}
+
+### POST - Crear nueva opinión
+POST http://localhost:8080/api/opiniones/save
+Content-Type: application/json
+
+{
+  "idAutor": 1,
+  "idReceptor": 2,
+  "opinion": "Excelente reunión, muy productiva",
+  "valorReunion": 4.5
+}
+
+###> Response: 201 Created
+{
+  "status": "success",
+  "message": "Opinión creada exitosamente",
+  "data": {
+    "id": 1,
+    "idAutor": {"id": 1},
+    "idReceptor": {"id": 2},
+    "opinion": "Excelente reunión, muy productiva",
+    "valorReunion": 4.5
+  }
+}
+
+### PUT - Actualizar opinión
+PUT http://localhost:8080/api/opiniones/update/1
+Content-Type: application/json
+
+{
+  "opinion": "Muy buena experiencia",
+  "valorReunion": 5
+}
+
+###> Response: 200 OK
+{
+  "status": "success",
+  "message": "Opinión actualizada exitosamente",
+  "data": {
+    "id": 1,
+    "opinion": "Muy buena experiencia",
+    "valorReunion": 5
+  }
+}
+
+### DELETE - Eliminar opinión
+DELETE http://localhost:8080/api/opiniones/delete/1
+
+###> Response: 200 OK
+{
+  "status": "success",
+  "message": "Opinión eliminada exitosamente"
+}
+
+### =====================================================
+### DISPONIBILIDAD CONTROLLER - /api/disponibilidad
+### =====================================================
+
+### GET - Obtener todas las disponibilidades
+GET http://localhost:8080/api/disponibilidad/all
+
+###> Response: 200 OK
+{
+  "data": [
+    {
+      "id": 1,
+      "idUsuario": {
+        "id": 1,
+        "nombre": "Juan"
+      },
+      "diaSemana": "Lunes",
+      "horaInicio": "09:00:00",
+      "horaFin": "17:00:00",
+      "disponible": true
+    }
+  ],
+  "status": "success",
+  "message": "Disponibilidades obtenidas correctamente"
+}
+
+### GET - Obtener disponibilidad por ID
+GET http://localhost:8080/api/disponibilidad/1
+
+###> Response: 200 OK
+{
+  "id": 1,
+  "idUsuario": {
+    "id": 1,
+    "nombre": "Juan"
+  },
+  "diaSemana": "Lunes",
+  "horaInicio": "09:00:00",
+  "horaFin": "17:00:00",
+  "disponible": true
+}
+
+### GET - Obtener disponibilidades por usuario
+GET http://localhost:8080/api/disponibilidad/byUsuario?id=1
+
+###> Response: 200 OK
+{
+  "data": [
+    {
+      "id": 1,
+      "idUsuario": {"id": 1},
+      "diaSemana": "Lunes",
+      "horaInicio": "09:00:00",
+      "horaFin": "17:00:00",
+      "disponible": true
+    }
+  ],
+  "status": "success"
+}
+
+### POST - Crear nueva disponibilidad
+POST http://localhost:8080/api/disponibilidad/save
+Content-Type: application/json
+
+{
+  "idUsuario": 1,
+  "diaSemana": "Lunes",
+  "horaInicio": "09:00:00",
+  "horaFin": "17:00:00",
+  "disponible": true
+}
+
+###> Response: 201 Created
+{
+  "status": "success",
+  "message": "Disponibilidad creada exitosamente",
+  "data": {
+    "id": 1,
+    "idUsuario": {"id": 1},
+    "diaSemana": "Lunes",
+    "horaInicio": "09:00:00",
+    "horaFin": "17:00:00",
+    "disponible": true
+  }
+}
+
+### PUT - Actualizar disponibilidad
+PUT http://localhost:8080/api/disponibilidad/update/1
+Content-Type: application/json
+
+{
+  "diaSemana": "Martes",
+  "horaInicio": "10:00:00",
+  "horaFin": "18:00:00"
+}
+
+###> Response: 200 OK
+{
+  "status": "success",
+  "message": "Disponibilidad actualizada exitosamente",
+  "data": {
+    "id": 1,
+    "diaSemana": "Martes",
+    "horaInicio": "10:00:00",
+    "horaFin": "18:00:00"
+  }
+}
+
+### DELETE - Eliminar disponibilidad
+DELETE http://localhost:8080/api/disponibilidad/delete/1
+
+###> Response: 200 OK
+{
+  "status": "success",
+  "message": "Disponibilidad eliminada exitosamente"
+}
+
+### =====================================================
+### HABILIDADES CONTROLLER - /api/habilidades
+### =====================================================
+
+### GET - Obtener todas las habilidades
+GET http://localhost:8080/api/habilidades/all
+
+###> Response: 200 OK
+{
+  "data": [
+    {
+      "id": 1,
+      "idUsuario": {
+        "id": 1,
+        "nombre": "Juan"
+      },
+      "idCategoriaHabilidad": {
+        "id": 1,
+        "nombre": "Programación"
+      },
+      "idNivel": {
+        "id": 3,
+        "nivel": "Avanzado"
+      },
+      "nomHabilidad": "Java Advanced",
+      "descripcionBreve": "Experiencia en desarrollo con Spring Boot",
+      "fotoDiploma": "https://example.com/diploma.jpg"
+    }
+  ],
+  "status": "success",
+  "message": "Habilidades obtenidas correctamente"
+}
+
+### GET - Obtener habilidad por ID
+GET http://localhost:8080/api/habilidades/1
+
+###> Response: 200 OK
+{
+  "id": 1,
+  "idUsuario": {
+    "id": 1,
+    "nombre": "Juan"
+  },
+  "idCategoriaHabilidad": {
+    "id": 1,
+    "nombre": "Programación"
+  },
+  "idNivel": {
+    "id": 3,
+    "nivel": "Avanzado"
+  },
+  "nomHabilidad": "Java Advanced",
+  "descripcionBreve": "Experiencia en desarrollo con Spring Boot",
+  "fotoDiploma": "https://example.com/diploma.jpg"
+}
+
+### GET - Obtener habilidades por usuario
+GET http://localhost:8080/api/habilidades/byUsuario?id=1
+
+###> Response: 200 OK
+{
+  "data": [
+    {
+      "id": 1,
+      "idUsuario": {"id": 1},
+      "idCategoriaHabilidad": {"id": 1},
+      "idNivel": {"id": 3},
+      "nomHabilidad": "Java Advanced",
+      "descripcionBreve": "Experiencia en desarrollo con Spring Boot",
+      "fotoDiploma": "https://example.com/diploma.jpg"
+    }
+  ],
+  "status": "success"
+}
+
+### POST - Crear nueva habilidad
+POST http://localhost:8080/api/habilidades/save
+Content-Type: application/json
+
+{
+  "idUsuario": 1,
+  "idCategoriaHabilidad": 1,
+  "idNivel": 3,
+  "nomHabilidad": "Java Advanced",
+  "descripcionBreve": "Experiencia en desarrollo con Spring Boot",
+  "fotoDiploma": "https://example.com/diploma.jpg"
+}
+
+###> Response: 201 Created
+{
+  "status": "success",
+  "message": "Habilidad creada exitosamente",
+  "data": {
+    "id": 1,
+    "idUsuario": {"id": 1},
+    "idCategoriaHabilidad": {"id": 1},
+    "idNivel": {"id": 3},
+    "nomHabilidad": "Java Advanced",
+    "descripcionBreve": "Experiencia en desarrollo con Spring Boot",
+    "fotoDiploma": "https://example.com/diploma.jpg"
+  }
+}
+
+### PUT - Actualizar habilidad
+PUT http://localhost:8080/api/habilidades/update/1
+Content-Type: application/json
+
+{
+  "nomHabilidad": "Java Expert",
+  "idNivel": 4
+}
+
+###> Response: 200 OK
+{
+  "status": "success",
+  "message": "Habilidad actualizada exitosamente",
+  "data": {
+    "id": 1,
+    "nomHabilidad": "Java Expert",
+    "idNivel": {"id": 4}
+  }
+}
+
+### DELETE - Eliminar habilidad
+DELETE http://localhost:8080/api/habilidades/delete/1
+
+###> Response: 200 OK
+{
+  "status": "success",
+  "message": "Habilidad eliminada exitosamente"
+}
+
+### =====================================================
+### RESUMEN DE TIPOS DE DATOS JSON
+### =====================================================
+
+### Usuario Object
+{
+  "id": "Integer",
+  "nombre": "String",
+  "apellido": "String",
+  "email": "String (unique)",
+  "password": "String",
+  "fotoPerfil": "String (URL) | null",
+  "biografia": "String | null",
+  "fechaRegistro": "String (ISO-8601 datetime)"
+}
+
+### Reunión Object
+{
+  "id": "Integer",
+  "idUsuario1": "Usuario Object",
+  "idUsuario2": "Usuario Object",
+  "idEstadoR": "EstadoReunion Object",
+  "fechaReunion": "String (ISO-8601 datetime)",
+  "duracionReunion": "String (HH:mm:ss)"
+}
+
+### Opinión Object
+{
+  "id": "Integer",
+  "idAutor": "Usuario Object",
+  "idReceptor": "Usuario Object",
+  "opinion": "String",
+  "valorReunion": "Float (1-5) | null"
+}
+
+### Disponibilidad Object
+{
+  "id": "Integer",
+  "idUsuario": "Usuario Object",
+  "diaSemana": "String (Lunes, Martes, ...)",
+  "horaInicio": "String (HH:mm:ss)",
+  "horaFin": "String (HH:mm:ss)",
+  "disponible": "Boolean"
+}
+
+### Habilidad Object
+{
+  "id": "Integer",
+  "idUsuario": "Usuario Object",
+  "idCategoriaHabilidad": "CategoriaHabilidad Object",
+  "idNivel": "NivelHabilidad Object",
+  "nomHabilidad": "String",
+  "descripcionBreve": "String | null",
+  "fotoDiploma": "String (URL) | null"
+}
+
+### EstadoReunión Object
+{
+  "id": "Integer",
+  "estado": "String (Programada, Completada, Cancelada)"
+}
+
+### CategoriaHabilidad Object
+{
+  "id": "Integer",
+  "nombre": "String"
+}
+
+### NivelHabilidad Object
+{
+  "id": "Integer",
+  "nivel": "String (Básico, Intermedio, Avanzado, Experto)"
+}
+
+### =====================================================
+### CÓDIGOS DE RESPUESTA HTTP ESTÁNDAR
+### =====================================================
+
+# 200 OK - Operación GET/PUT exitosa
+# 201 Created - POST exitoso, recurso creado
+# 204 No Content - DELETE exitoso
+# 400 Bad Request - Datos inválidos o entidades no encontradas
+# 404 Not Found - Recurso no existe
+# 409 Conflict - Conflicto de datos (ej: email duplicado)
+# 500 Internal Server Error - Error del servidor
+
+### =====================================================
+### NOTAS IMPORTANTES
+### =====================================================
+
+# 1. Todos los POST y PUT deben usar Content-Type: application/json
+# 2. Los timestamps usan formato ISO-8601: "2025-11-12T15:30:00Z"
+# 3. Las horas usan formato: "HH:mm:ss" (ej: "14:30:00")
+# 4. Los valores flotantes para ratings: 4.5, 3.0, etc.
+# 5. Las relaciones bidireccionales (OneToMany/ManyToOne) están manejadas con @JsonBackReference/@JsonManagedReference
+# 6. No se devuelven colecciones anidadas (habilidades, disponibilidades, reuniones, opiniones) en la respuesta del Usuario para evitar duplicidad
+# 7. Para obtener todas las habilidades/disponibilidades de un usuario, usar los endpoints /byUsuario
+# 8. Todos los valores booleanos: true/false (sin comillas)

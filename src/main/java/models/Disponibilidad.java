@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.time.LocalTime;
 
@@ -20,7 +20,7 @@ public class Disponibilidad {
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "id_usuario", nullable = false)
-  @JsonManagedReference
+  @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "habilidades", "disponibilidades", "reunionesComoUsuario1", "reunionesComoUsuario2", "opinionesComoAutor", "opinionesComoReceptor", "password"})
   private Usuario idUsuario;
 
   @Column(name = "dia_semana", nullable = false, length = 20)

@@ -11,6 +11,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ReunionesRepository extends JpaRepository<Reunione, Integer> {
 
-  @Query("select r from Reunione r where r.idUsuario1.id = :usuario or r.idUsuario2.id = :usuario")
+  @Query("select r from Reunione r join fetch r.idUsuario1 u1 join fetch r.idUsuario2 u2 join fetch r.idEstadoR e where u1.id = :usuario or u2.id = :usuario")
   public List<Reunione> findByUsuario(int usuario);
 }

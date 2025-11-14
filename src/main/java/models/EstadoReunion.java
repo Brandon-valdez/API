@@ -3,6 +3,7 @@ package models;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -21,6 +22,7 @@ public class EstadoReunion {
   private String tipoEstado;
 
   @OneToMany(mappedBy = "idEstadoR")
+  @JsonIgnore
   private Set<Reunione> reuniones = new LinkedHashSet<>();
 
 }

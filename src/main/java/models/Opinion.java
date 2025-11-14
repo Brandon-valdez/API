@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Getter
 @Setter
@@ -20,13 +20,13 @@ public class Opinion {
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @OnDelete(action = OnDeleteAction.CASCADE)
   @JoinColumn(name = "id_autor", nullable = false)
-  @JsonManagedReference
+  @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "habilidades", "disponibilidades", "reunionesComoUsuario1", "reunionesComoUsuario2", "opinionesComoAutor", "opinionesComoReceptor", "password"})
   private Usuario idAutor;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @OnDelete(action = OnDeleteAction.CASCADE)
   @JoinColumn(name = "id_receptor", nullable = false)
-  @JsonManagedReference
+  @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "habilidades", "disponibilidades", "reunionesComoUsuario1", "reunionesComoUsuario2", "opinionesComoAutor", "opinionesComoReceptor", "password"})
   private Usuario idReceptor;
 
   @Lob
